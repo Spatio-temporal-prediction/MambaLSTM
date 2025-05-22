@@ -19,7 +19,7 @@ from sklearn.metrics import f1_score, accuracy_score, roc_auc_score, average_pre
 curPath = os.path.abspath(os.path.dirname(__file__))
 print(curPath)
 sys.path.append(curPath)
-from ICDM.ICDM_MambaLSTM import ICDM_MambaLSTM
+from main import Main_MambaLSTM
 
 
 from data_process import dataloader
@@ -446,7 +446,7 @@ valid_mask_f = torch.sum(grid_node_map_f, dim=1).view(int(np.sqrt(grid_node_map_
 adj_matrices_c = torch.stack([poi_adj_c, risk_adj_c, road_adj_c], dim=0).to(device, dtype=torch.float32)
 adj_matrices_f = torch.stack([poi_adj_f, risk_adj_f, road_adj_f], dim=0).to(device, dtype=torch.float32)
 
-model = ICDM_MambaLSTM(
+model = Main_MambaLSTM(
         c_h=10, c_w=10,
         c_static_feat=static_feat_c,
         c_semantic_mats=adj_matrices_c,
